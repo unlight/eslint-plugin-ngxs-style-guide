@@ -2,8 +2,7 @@ module.exports = {
     "root": true,
     "env": {
         "node": true,
-        "jest": true,
-        "jest/globals": true,
+        "mocha": true,
     },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -18,7 +17,6 @@ module.exports = {
         "wix-editor",
         "unicorn",
         "import",
-        "jest",
         "@typescript-eslint/tslint",
         "sonarjs",
         "only-warn",
@@ -29,7 +27,6 @@ module.exports = {
         "plugin:import/errors",
         "plugin:import/warnings",
         "plugin:import/typescript",
-        "plugin:jest/recommended",
         "plugin:sonarjs/recommended",
     ],
     "rules": {

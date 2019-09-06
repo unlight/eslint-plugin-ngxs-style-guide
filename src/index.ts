@@ -1,24 +1,10 @@
-import { PlainObject } from 'simplytyped';
 
-const dict: PlainObject = {};
+export const rules = {
+};
 
-/**
- * Hello function whithout parameter
- * @returns result string
- */
-export function hello(): string;
-
-/**
- * This is hello function
- * @returns result string
- */
-export function hello(greet: string = 'Hello') {
-    return `${greet} world`;
-}
-
-export class X {
-
-    constructor(
-        private readonly o: PlainObject,
-    ) { }
-}
+export const configs = {
+    recommended: {
+        rules: {
+        }
+    }
+};
