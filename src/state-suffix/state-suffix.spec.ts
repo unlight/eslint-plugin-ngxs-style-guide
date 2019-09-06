@@ -1,5 +1,3 @@
-import { TSESLint } from '@typescript-eslint/experimental-utils';
-import * as parser from '@typescript-eslint/parser';
 import * as stateSuffix from './state-suffix';
 import { ruleTester } from '../index.spec';
 

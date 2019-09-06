@@ -12,7 +12,7 @@ export const rule: Rule.RuleModule = {
                     throw new TypeError(`Unexpected node type (${node.type}), expected ClassDeclaration`);
                 }
                 const decoratorNode = getDecoratorByName(node, 'State');
-                if (decoratorNode != null) {
+                if (decoratorNode != undefined) {
                     if (!(node.id && node.id.name.endsWith('State'))) {
                         context.report({
                             node: node.id as any,

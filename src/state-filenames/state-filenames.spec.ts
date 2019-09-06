@@ -1,5 +1,3 @@
-import { TSESLint } from '@typescript-eslint/experimental-utils';
-import * as parser from '@typescript-eslint/parser';
 import * as stateFilenames from './state-filenames';
 import { ruleTester } from '../index.spec';
 

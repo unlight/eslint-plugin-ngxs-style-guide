@@ -18,5 +18,5 @@ export function isClassDeclaration(node: Node): node is ClassDeclaration {
 
 export function hasStateDecorator(node: ClassDeclaration) {
     const decoratorNode = getDecoratorByName(node, 'State');
-    return decoratorNode != null;
+    return decoratorNode != undefined;
 }
