@@ -4,6 +4,7 @@ import { Rule } from 'eslint';
 export const message = 'A state should always be suffixed with the word `State`';
 
 export const rule: Rule.RuleModule = {
+
     create(context) {
         return {
             ClassDeclaration(node) {

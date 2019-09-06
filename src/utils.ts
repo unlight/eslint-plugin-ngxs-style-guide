@@ -15,3 +15,8 @@ export function getDecoratorByName(node: any, name: string): Decorator | undefin
 export function isClassDeclaration(node: Node): node is ClassDeclaration {
     return node.type === 'ClassDeclaration';
 }
+
+export function hasStateDecorator(node: ClassDeclaration) {
+    const decoratorNode = getDecoratorByName(node, 'State');
+    return decoratorNode != null;
+}
