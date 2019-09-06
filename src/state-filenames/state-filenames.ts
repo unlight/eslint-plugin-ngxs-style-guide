@@ -14,6 +14,9 @@ function create(context: eslint.RuleContext<string, never>) {
         ClassDeclaration(node: estree.ClassDeclaration) {
             hasDecorator = hasStateDecorator(node);
         },
+        Program() {
+            hasDecorator = false;
+        },
         'Program:exit'(node: estree.Program) {
             if (hasDecorator) {
                 context.report({

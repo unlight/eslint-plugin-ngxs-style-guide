@@ -3,13 +3,12 @@ import * as eslint from '@typescript-eslint/experimental-utils/dist/ts-eslint';
 
 export { estree, eslint };
 
-export function getDecoratorByName(node: any, name: string): estree.Decorator | undefined {
-    const result: estree.Decorator = (node.decorators || []).find(d => {
+export function getDecoratorByName(node: estree.Node, name: string): estree.Decorator | undefined {
+    return ((<any>node).decorators || []).find(d => {
         const expression = d.expression && d.expression.type === 'CallExpression'
             && d.expression as estree.CallExpression;
         return expression && expression.callee.type === 'Identifier' && expression.callee.name === name;
     });
-    return result;
 }
 
 export function isClassDeclaration(node: estree.Node): node is estree.ClassDeclaration {
