@@ -12,6 +12,7 @@ it('select-suffix', () => {
         ],
         valid: [
             `class FeedZebra { static readonly type = '[Zoo] Feed Zebra' }`,
+            `class Feed { static readonly type = 'x [Zoo] Feed' }`,
         ],
     });
 
