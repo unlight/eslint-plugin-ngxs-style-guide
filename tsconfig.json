@@ -13,7 +13,7 @@
     "removeComments": false,
     "sourceMap": true,
     "declaration": true,
-    "declarationMap": true,
+    "declarationMap": false,
     "skipLibCheck": true,
     "lib": [
       "esnext"
