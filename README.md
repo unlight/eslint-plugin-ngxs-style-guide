@@ -23,3 +23,7 @@ plugin:ngxs-style-guide/recommended
 NGXS style guide - https://www.ngxs.io/recipes/style-guide
 
 * `ngxs-style-guide/state-suffix`  A state should always be suffixed with the word `State`. Right: `ZooState` Wrong: `Zoo`
+* `ngxs-style-guide/state-filenames`  States should have a `.state.ts` suffix for the filename
+* `ngxs-style-guide/state-interfaces`  State interfaces should be named the name of the state followed by the `Model` suffix
+* `ngxs-style-guide/select-suffix`  Selects should have a `$` suffix
+* `ngxs-style-guide/action-suffixes`  Actions should NOT have a suffix
