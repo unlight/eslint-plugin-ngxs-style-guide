@@ -75,5 +75,13 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unlight/eslint-plugin-ngxs-style-guide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/unlight/eslint-plugin-ngxs-style-guide/issues"
+  },
+  "homepage": "https://github.com/unlight/eslint-plugin-ngxs-style-guide#readme"
 }
