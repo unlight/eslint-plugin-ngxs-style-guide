@@ -1,0 +1,80 @@
+{
+  "name": "node-package-starter",
+  "version": "0.0.0-dev",
+  "license": "MIT",
+  "description": "",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "author": "2019",
+  "keywords": [
+    "eslintplugin",
+    "eslint-plugin",
+    "ngxs",
+    "style-guide"
+  ],
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "test": "npm run eslint && npm run tscheck && npm run test:cov && npm run typecov",
+    "test:r": "node node_modules/jest/bin/jest --runInBand --verbose",
+    "test:w": "npm run test:r -- --watch",
+    "test:cov": "npm run test:r -- --collectCoverage",
+    "test:d": "node --inspect-brk node_modules/jest/bin/jest --runInBand --testMatch \"<rootDir>/src/**/*.spec.ts\"",
+    "test:m": "node node_modules/stryker-cli/bin/stryker-cli run",
+    "typecov": "node node_modules/type-coverage/bin/type-coverage --detail",
+    "tscheck": "echo tscheck... && tsc --noEmit",
+    "tscheck:w": "npm run tscheck -- --watch",
+    "tsclint": "tsc --noEmit --strict --forceConsistentCasingInFileNames --noImplicitReturns --noImplicitThis --noUnusedLocals --noUnusedParameters",
+    "tsclint:w": "npm run tsclint -- --watch",
+    "eslint:w": "watchexec -w src \"npm run eslint\"",
+    "eslint": "node node_modules/eslint/bin/eslint src --ext ts",
+    "eslint:fix": "npm run eslint -- --fix",
+    "tslint:fix": "node node_modules/tslint/bin/tslint -p tsconfig.json --fix",
+    "lint:w:win32": "sh Taskfile lint_watch",
+    "lint:w": "run-p tsclint:w eslint:w",
+    "semantic-release": "semantic-release",
+    "prepublishOnly": "sed -i -e 's/devDependencies/_devDependencies/g' package.json",
+    "copySource": "cp -rv src dist && find dist/src -name '*.spec.ts' | xargs rm -f",
+    "dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server",
+    "build": "sh Taskfile build",
+    "commit": "git-cz"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/commit-analyzer": "^6.3.0",
+    "@semantic-release/git": "^7.0.16",
+    "@semantic-release/github": "^5.4.3",
+    "@semantic-release/npm": "^5.1.15",
+    "@semantic-release/release-notes-generator": "^7.3.0",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.3",
+    "@typescript-eslint/eslint-plugin-tslint": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.3.0",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.16.0",
+    "eslint-plugin-only-warn": "^1.0.1",
+    "eslint-plugin-sonarjs": "^0.4.0",
+    "eslint-plugin-unicorn": "^10.0.0",
+    "eslint-plugin-wix-editor": "^3.0.0",
+    "jest": "^24.9.0",
+    "npm-run-all": "^4.1.5",
+    "semantic-release": "^15.13.24",
+    "simplytyped": "^3.2.3",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.19.0",
+    "tslint-clean-code": "^0.2.9",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "tslint-sonarts": "^1.9.0",
+    "type-coverage": "^2.2.0",
+    "typescript": "~3.5.3",
+    "watchexec-bin": "^1.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
