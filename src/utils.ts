@@ -1,22 +1,27 @@
-import { CallExpression, Expression, Node, ClassDeclaration } from 'estree';
+import * as estree from '@typescript-eslint/typescript-estree/dist/ts-estree/ts-estree';
+import * as eslint from '@typescript-eslint/experimental-utils/dist/ts-eslint';
 
-export type Decorator = {
-    expression: Expression;
-};
+export { estree, eslint };
 
-export function getDecoratorByName(node: any, name: string): Decorator | undefined {
-    const result: Decorator = (node.decorators || []).find(d => {
-        const expression = d.expression && d.expression.type === 'CallExpression' && d.expression as CallExpression;
+export function getDecoratorByName(node: any, name: string): estree.Decorator | undefined {
+    const result: estree.Decorator = (node.decorators || []).find(d => {
+        const expression = d.expression && d.expression.type === 'CallExpression'
+            && d.expression as estree.CallExpression;
         return expression && expression.callee.type === 'Identifier' && expression.callee.name === name;
     });
     return result;
 }
 
-export function isClassDeclaration(node: Node): node is ClassDeclaration {
+export function isClassDeclaration(node: estree.Node): node is estree.ClassDeclaration {
     return node.type === 'ClassDeclaration';
 }
 
-export function hasStateDecorator(node: ClassDeclaration) {
+export function isClassProperty(node: estree.Node): node is estree.ClassProperty {
+    return node.type === 'ClassProperty';
+}
+
+export function hasStateDecorator(node: estree.ClassDeclaration) {
     const decoratorNode = getDecoratorByName(node, 'State');
     return decoratorNode != undefined;
 }
+

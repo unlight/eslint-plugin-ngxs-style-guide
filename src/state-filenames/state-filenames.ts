@@ -1,10 +1,8 @@
-import { hasStateDecorator } from '../utils';
-import { Rule } from 'eslint';
-import * as estree from 'estree';
+import { hasStateDecorator, estree, eslint } from '../utils';
 
 export const message = 'States should have a `.state.ts` suffix for the filename';
 
-function create(context: Rule.RuleContext) {
+function create(context: eslint.RuleContext<string, never>) {
     const filenameWithExtension = context.getFilename();
     if (filenameWithExtension === '<input>' || filenameWithExtension === '<text>') {
         return {};
@@ -19,8 +17,9 @@ function create(context: Rule.RuleContext) {
         'Program:exit'(node: estree.Program) {
             if (hasDecorator) {
                 context.report({
-                    node,
+                    // @ts-ignore
                     message,
+                    node,
                 });
             }
         },
@@ -28,5 +27,5 @@ function create(context: Rule.RuleContext) {
 }
 
 export const rule = {
-    create
+    create,
 };

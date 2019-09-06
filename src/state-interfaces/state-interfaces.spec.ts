@@ -13,6 +13,7 @@ it('state-interfaces', () => {
         ],
         valid: [
             `@State<ZooStateModel>() class ZooState { }`,
+            `@Other<OtherType>() class OtherClass { }`,
         ],
     });
 
