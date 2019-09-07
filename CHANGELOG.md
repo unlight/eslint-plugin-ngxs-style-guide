@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v1.0.0...v1.1.0) (2019-09-07)
+
+
+### Features
+
+* plugin-suffix rule ([d6496dd](https://github.com/unlight/eslint-plugin-ngxs-style-guide/commit/d6496dd))
+
 # 1.0.0 (2019-09-06)
 
 
