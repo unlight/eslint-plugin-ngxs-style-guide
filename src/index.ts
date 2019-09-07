@@ -17,8 +17,8 @@ export const rules = {
 export const configs = {
     recommended: {
         rules: Object.keys(rules).reduce((result, current) => {
-            result[current] = 1;
+            result[`ngxs-style-guide/${current}`] = 1;
             return result;
-        }, {}),
-    },
+        }, {})
+    }
 };

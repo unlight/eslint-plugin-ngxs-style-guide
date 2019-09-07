@@ -13,6 +13,10 @@ it('state-filenames', () => {
         ],
         valid: [
             {
+                filename: 'src/zoo.state.ts',
+                code: '@State() class ZooState { }',
+            },
+            {
                 code: 'class ValidFileName {}',
                 filename: 'src/zoo.state.ts',
             },

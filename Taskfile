@@ -28,7 +28,7 @@ build_bundle() {
     cp -v README.md LICENSE package.json dist
     cd dist
     /usr/bin/find -name '*.spec.ts' | xargs rm -rvf
-    npx typescript-bundle tsconfig.json --outFile index.js
+    npx typescript-bundle tsconfig.json --exportAs commonjs --outFile index.js
     rm -rvf tsconfig.json
     /usr/bin/find -name '*.ts' | xargs rm -rvf
     /usr/bin/find . -type d -empty -delete

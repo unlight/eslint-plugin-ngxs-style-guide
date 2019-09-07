@@ -3,7 +3,7 @@ import { ruleTester } from '../index.spec';
 
 it('state-suffix', () => {
 
-    ruleTester.run('state-suffix', stateSuffix.rule as any, {
+    ruleTester.run('state-suffix', stateSuffix.rule, {
         invalid: [
             {
                 code: `@State() class Zoo { }`,

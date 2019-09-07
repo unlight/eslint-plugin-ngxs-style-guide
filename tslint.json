@@ -50,6 +50,7 @@
     "no-unnecessary-bind": false,
     "linebreak-style": false,
     "no-submodule-imports": false,
+    "function-name": false,
     ".": false
   }
 }
