@@ -1,5 +1,4 @@
-import * as estree from '@typescript-eslint/typescript-estree/dist/ts-estree/ts-estree';
-import * as eslint from '@typescript-eslint/experimental-utils/dist/ts-eslint';
+import { TSESTree as estree, TSESLint as eslint } from '@typescript-eslint/experimental-utils';
 
 export { estree, eslint };
 
@@ -19,8 +18,22 @@ export function isClassProperty(node: estree.Node): node is estree.ClassProperty
     return node.type === 'ClassProperty';
 }
 
-export function hasStateDecorator(node: estree.ClassDeclaration) {
+export function hasStateDecorator(node: estree.ClassDeclaration): boolean {
     const decoratorNode = getDecoratorByName(node, 'State');
     return decoratorNode != undefined;
 }
 
+export function isImplements(node: estree.ClassDeclaration, interfaceName: string): boolean {
+    return Boolean(node.implements &&
+        node.implements.find(node => {
+            return (node && node.expression && node.expression.type === 'Identifier'
+                && node.expression.name === interfaceName);
+        }));
+}
+
+export function isIdentifierEndsWith(node: { id?: estree.Identifier }, name: string): boolean {
+    if (!node.id) {
+        return true;
+    }
+    return node.id.name.endsWith(name);
+}

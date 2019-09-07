@@ -3,13 +3,15 @@ import * as stateFilenames from './state-filenames/state-filenames';
 import * as stateInterfaces from './state-interfaces/state-interfaces';
 import * as selectSuffix from './select-suffix/select-suffix';
 import * as actionSuffixes from './action-suffixes/action-suffixes';
+import * as pluginSuffix from './plugin-suffix/plugin-suffix';
 
 export const rules = {
-    'state-suffix': stateSuffix.rule,
     'state-filenames': stateFilenames.rule,
     'state-interfaces': stateInterfaces.rule,
-    'select-suffix': selectSuffix.rule,
     'action-suffixes': actionSuffixes.rule,
+    'state-suffix': stateSuffix.rule,
+    'select-suffix': selectSuffix.rule,
+    'plugin-suffix': pluginSuffix.rule,
 };
 
 export const configs = {
