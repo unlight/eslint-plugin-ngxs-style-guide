@@ -29,6 +29,11 @@ export function hasActionDecorator(node: estree.Node): boolean {
     return decorator != undefined;
 }
 
+export function hasSelectDecorator(node: estree.Node) {
+    const decorator = getDecoratorByName(node, 'Select');
+    return decorator != undefined;
+}
+
 export function isImplements(node: estree.ClassDeclaration, interfaceName: string): boolean {
     return Boolean(node.implements &&
         node.implements.find(node => {

@@ -1,24 +1,28 @@
-import * as stateSuffix from './state-suffix/state-suffix';
-import * as stateFilenames from './state-filenames/state-filenames';
-import * as stateInterfaces from './state-interfaces/state-interfaces';
-import * as selectSuffix from './select-suffix/select-suffix';
-import * as actionSuffixes from './action-suffixes/action-suffixes';
-import * as pluginSuffix from './plugin-suffix/plugin-suffix';
+import { rule as stateSuffix } from './state-suffix/state-suffix';
+import { rule as stateFilenames } from './state-filenames/state-filenames';
+import { rule as stateInterfaces } from './state-interfaces/state-interfaces';
+import { rule as actionSuffixes } from './action-suffixes/action-suffixes';
+import { rule as pluginSuffix } from './plugin-suffix/plugin-suffix';
+import { rule as selectSuffix } from './select-suffix/select-suffix';
 
 export const rules = {
-    'state-filenames': stateFilenames.rule,
-    'state-interfaces': stateInterfaces.rule,
-    'action-suffixes': actionSuffixes.rule,
-    'state-suffix': stateSuffix.rule,
-    'select-suffix': selectSuffix.rule,
-    'plugin-suffix': pluginSuffix.rule,
+    'state-filenames': stateFilenames,
+    'state-interfaces': stateInterfaces,
+    'action-suffixes': actionSuffixes,
+    'state-suffix': stateSuffix,
+    'plugin-suffix': pluginSuffix,
+    'select-suffix': selectSuffix,
 };
 
 export const configs = {
     recommended: {
-        rules: Object.keys(rules).reduce((result, current) => {
-            result[`ngxs-style-guide/${current}`] = 1;
-            return result;
-        }, {})
+        rules: {
+            'ngxs-style-guide/state-filenames': 1,
+            'ngxs-style-guide/state-interfaces': 1,
+            'ngxs-style-guide/action-suffixes': 1,
+            'ngxs-style-guide/state-suffix': 1,
+            'ngxs-style-guide/plugin-suffix': 1,
+            'ngxs-style-guide/select-suffix': 1,
+        },
     }
 };

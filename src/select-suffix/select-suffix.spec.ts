@@ -1,13 +1,13 @@
-import * as stateSuffix from './select-suffix';
+import { rule } from './select-suffix';
 import { ruleTester } from '../index.spec';
 
 it('select-suffix', () => {
 
-    ruleTester.run('select-suffix', stateSuffix.rule as any, {
+    ruleTester.run('select-suffix', rule, {
         invalid: [
             {
                 code: `class ZooComponent { @Select(ZooState) animals }`,
-                errors: [{ message: stateSuffix.message } as any],
+                errors: [{ messageId: 'suffix' }],
                 output: `class ZooComponent { @Select(ZooState) animals$ }`,
             },
         ],
