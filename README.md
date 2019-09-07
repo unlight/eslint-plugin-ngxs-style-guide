@@ -30,5 +30,4 @@ NGXS style guide - https://www.ngxs.io/recipes/style-guide
 * `ngxs-style-guide/plugin-suffix`  Plugins should end with the `Plugin` suffix
 
 ## Todo
-* Plugin Suffix
 * https://stackoverflow.com/questions/56122116/do-not-subscribe-to-actions-ngxs

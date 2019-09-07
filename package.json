@@ -4,7 +4,6 @@
   "license": "MIT",
   "description": "ESLint rules for ngxs state manager",
   "main": "index.js",
-  "typings": "index.d.ts",
   "author": "2019",
   "keywords": [
     "eslintplugin",
@@ -32,7 +31,7 @@
     "lint:w": "run-p tsclint:w eslint:w",
     "semantic-release": "semantic-release",
     "dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server",
-    "build": "sh Taskfile build",
+    "build": "sh Taskfile build_bundle",
     "commit": "git-cz"
   },
   "dependencies": {
