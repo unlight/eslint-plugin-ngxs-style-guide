@@ -4,6 +4,8 @@ export const message = 'Do not subscribe in actions, return Observable';
 
 function create(context: eslint.RuleContext<string, never>) {
 
+    // console.log("context.parserServices!.program", context.parserServices!.program);
+
     return {
         MemberExpression(node: estree.MemberExpression) {
             if (node.property && node.property.type === 'Identifier' && node.property.name === 'subscribe') {

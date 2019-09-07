@@ -1,4 +1,4 @@
-import { ruleTester } from '../index.spec';
+import { ruleTester, fixtureFile, fixtureProjectFile } from '../index.spec';
 import * as impl from './no-subscribe-in-actions';
 
 it('no-subscribe-in-actions', () => {
@@ -8,6 +8,10 @@ it('no-subscribe-in-actions', () => {
             {
                 code: `@State() class AppState { @Action() initialized() { this.s.subscribe() } }`,
                 errors: [{ message: impl.message } as any],
+                filename: fixtureFile,
+                parserOptions: {
+                    project: fixtureProjectFile,
+                }
             },
         ],
         valid: [
