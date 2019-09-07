@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v1.1.0...v1.1.1) (2019-09-07)
+
+
+### Bug Fixes
+
+* Build is not exported as commonjs ([497833c](https://github.com/unlight/eslint-plugin-ngxs-style-guide/commit/497833c))
+
 # [1.1.0](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v1.0.0...v1.1.0) (2019-09-07)
 
 
