@@ -1,7 +1,8 @@
 import { TSESLint } from '@typescript-eslint/experimental-utils';
 import { rules, configs } from '.';
 import * as assert from 'assert';
-import * as path from 'path';
+import { join } from 'path';
+import { readFileSync } from 'fs';
 
 export const ruleTester = new TSESLint.RuleTester({
     parserOptions: {
@@ -12,9 +13,8 @@ export const ruleTester = new TSESLint.RuleTester({
     parser: require.resolve('@typescript-eslint/parser'),
 });
 
-
-export const fixtureFile = path.join(__dirname, '..', 'file.fixture.ts');
-export const fixtureProjectFile = path.join(__dirname, '..', 'tsconfig.fixture.json');
+export const fixtureProjectFile = join(__dirname, '..', 'tsconfig.fixture.json');
+export const fixtureFile = JSON.parse(readFileSync(fixtureProjectFile, 'utf8')).files[0];
 
 it('rules', () => {
     const size = Object.keys(rules).length;
