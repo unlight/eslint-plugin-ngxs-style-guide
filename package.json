@@ -36,7 +36,12 @@
   },
   "dependencies": {
     "@typescript-eslint/experimental-utils": "^2.1.0",
-    "ts-optchain": "^0.1.8"
+    "ts-optchain": "^0.1.8",
+    "tsutils": "^3.0.0",
+    "tsutils-etc": "^1.1.0"
+  },
+  "peerDependencies": {
+    "typescript": "3.X"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.4",
