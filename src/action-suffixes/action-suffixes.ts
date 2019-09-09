@@ -1,8 +1,7 @@
-import { getDecoratorByName, isClassProperty, estree, eslint } from "../utils";
-
-export const message = "Actions should NOT have a suffix `Action`";
+import { getDecoratorByName, isClassProperty, estree, eslint, getRuleId, CustomRule } from '../utils';
 
 function create(context: eslint.RuleContext<string, never>) {
+
     let className: string | undefined = undefined;
     let hasStaticReadonlyType = false;
     let isActionClass = false;
@@ -11,12 +10,11 @@ function create(context: eslint.RuleContext<string, never>) {
         ClassDeclaration(node: estree.ClassDeclaration) {
             className = node.id && node.id.name;
         },
-        "ClassDeclaration:exit"(node: estree.ClassDeclaration) {
-            if (isActionClass && className && className.endsWith("Action")) {
+        'ClassDeclaration:exit'(node: estree.ClassDeclaration) {
+            if (isActionClass && className && className.endsWith('Action') && node.id) {
                 context.report({
-                    // @ts-ignore
-                    message,
-                    node: node.id
+                    messageId: 'default',
+                    node: node.id,
                 });
             }
             isActionClass = false;
@@ -27,11 +25,11 @@ function create(context: eslint.RuleContext<string, never>) {
             if (className) {
                 hasStaticReadonlyType =
                     node.key &&
-                    (node.key as estree.Identifier).name === "type" &&
+                    (node.key as estree.Identifier).name === 'type' &&
                     node.readonly === true &&
                     node.static === true;
 
-                if (node.value && node.value.type === "Literal") {
+                if (node.value && node.value.type === 'Literal') {
                     const value = node.value.value as string;
                     if (/^\[[A-Z][A-Za-z]+\]/.test(value)) {
                         isActionClass = true;
@@ -42,7 +40,20 @@ function create(context: eslint.RuleContext<string, never>) {
     };
 }
 
-export const rule: eslint.RuleModule<string, never> = {
+export const rule: CustomRule = {
+    id: getRuleId(__filename),
     create,
-    meta: undefined as any
+    meta: {
+        docs: {
+            url: 'https://www.ngxs.io/recipes/style-guide#action-suffixes',
+            category: 'Best Practices',
+            recommended: 'warn',
+            description: 'Actions should NOT have a suffix',
+        },
+        type: 'suggestion',
+        schema: <any>undefined,
+        messages: {
+            default: 'Actions should NOT have a suffix `Action`',
+        }
+    },
 };

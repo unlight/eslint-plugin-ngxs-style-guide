@@ -1,21 +1,14 @@
-import { ruleTester, fixtureFile, fixtureProjectFile } from '../index.spec';
-import * as impl from './no-subscribe-in-actions';
+import { ruleTester } from '../index.spec';
+import { rule } from './no-subscribe-in-actions';
 
-it('no-subscribe-in-actions', () => {
-
-    ruleTester.run('no-subscribe-in-actions', impl.rule as any, {
+it(rule.id, () => {
+    ruleTester.run(rule.id, rule, {
         invalid: [
             {
                 code: `@State() class AppState { @Action() initialized() { this.s.subscribe() } }`,
-                errors: [{ message: impl.message } as any],
-                filename: fixtureFile,
-                parserOptions: {
-                    project: fixtureProjectFile,
-                }
-            },
+                errors: [{ messageId: 'default' }]
+            }
         ],
-        valid: [
-        ],
+        valid: [],
     });
-
 });

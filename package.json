@@ -35,6 +35,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
+    "1-liners": "^0.4.2",
     "@typescript-eslint/experimental-utils": "^2.1.0",
     "ts-optchain": "^0.1.8",
     "tsutils": "^3.0.0",

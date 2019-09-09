@@ -1,4 +1,4 @@
-import { getDecoratorByName, estree, eslint, hasSelectDecorator } from '../utils';
+import { estree, eslint, hasSelectDecorator, CustomRule, getRuleId } from '../utils';
 
 function create(context: eslint.RuleContext<string, never>) {
     return {
@@ -22,7 +22,8 @@ function create(context: eslint.RuleContext<string, never>) {
     };
 }
 
-export const rule: eslint.RuleModule<string, never> = {
+export const rule: CustomRule = {
+    id: getRuleId(__filename),
     create,
     meta: {
         docs: {

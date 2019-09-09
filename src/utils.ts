@@ -2,8 +2,15 @@ import { TSESTree as estree, TSESLint as eslint } from '@typescript-eslint/exper
 import { Predicate } from 'simplytyped';
 import * as tsutils from 'tsutils-etc';
 import * as ts from 'typescript';
+import { basename, extname } from 'path';
 
 export { estree, eslint };
+
+export type CustomRule<M extends string = string, O extends readonly unknown[] = any> = eslint.RuleModule<M, O> & { id: string };
+
+export function getRuleId(filename: string) {
+    return basename(filename, extname(filename));
+}
 
 export function getDecoratorByName(node: estree.Node, name: string): estree.Decorator | undefined {
     return ((<any>node).decorators || []).find(((d: { expression: estree.CallExpression }) => {
@@ -44,6 +51,40 @@ export function isImplements(node: estree.ClassDeclaration, interfaceName: strin
         }));
 }
 
+export function isCallExpression(node: estree.Node): node is estree.CallExpression {
+    return node.type === 'CallExpression';
+}
+
+export function isIdentifier(node: estree.Node): node is estree.Identifier {
+    return node.type === 'Identifier';
+}
+
+export function isLiteral(node: estree.Node): node is estree.Literal {
+    return node.type === 'Literal';
+}
+
+export function isMemberExpression(node: estree.Node): node is estree.MemberExpression {
+    return node.type === 'MemberExpression';
+}
+
+export function isFunctionDeclaration(
+    node: estree.Node
+): node is estree.FunctionDeclaration {
+    return node.type === 'FunctionDeclaration';
+}
+
+export function isArrowFunctionExpression(
+    node: estree.Node
+): node is estree.ArrowFunctionExpression {
+    return node.type === 'ArrowFunctionExpression';
+}
+
+export function isFunctionExpression(
+    node: estree.Node
+): node is estree.FunctionExpression {
+    return node.type === 'FunctionExpression';
+}
+
 export function isIdentifierEndsWith(node: { id?: estree.Identifier }, name: string): boolean {
     if (!node.id) {
         return true;
@@ -63,7 +104,7 @@ export function getParent(node: estree.Node, predicate: Predicate) {
     return result;
 }
 
-export function getParentFunction(node: estree.Node): estree.MethodDefinition | undefined {
+export function getParentMathod(node: estree.Node): estree.MethodDefinition | undefined {
     return getParent(node, (n: estree.Node) => n.type === 'MethodDefinition') as estree.MethodDefinition;
 }
 
@@ -111,26 +152,22 @@ export function typecheck(context: eslint.RuleContext<any, any>) {
         getTypeScriptType,
         couldBeType,
         couldReturnType,
-        couldBeObservable: (node: estree.Node) => couldBeType(node, "Observable"),
-        couldReturnObservable: (node: estree.Node) =>
-            couldReturnType(node, "Observable"),
-        couldBeSubscription: (node: estree.Node) => couldBeType(node, "Subscription"),
-        couldBeSubject: (node: estree.Node) => couldBeType(node, "Subject"),
-        couldBeBehaviorSubject: (node: estree.Node) =>
-            couldBeType(node, "BehaviorSubject"),
-        couldBeError: (node: estree.Node) => couldBeType(node, "Error"),
+        couldBeObservable: (node: estree.Node) => couldBeType(node, 'Observable'),
+        couldReturnObservable: (node: estree.Node) => couldReturnType(node, 'Observable'),
+        couldBeSubscription: (node: estree.Node) => couldBeType(node, 'Subscription'),
+        couldBeSubject: (node: estree.Node) => couldBeType(node, 'Subject'),
+        couldBeBehaviorSubject: (node: estree.Node) => couldBeType(node, 'BehaviorSubject'),
+        couldBeError: (node: estree.Node) => couldBeType(node, 'Error'),
         couldBeFunction: (node: estree.Node) => {
             // Fast check
             if (isArrowFunctionExpression(node) || isFunctionDeclaration(node)) {
                 return true;
             }
-
             // Check with a type checker
-            return couldBeFunctionTS(getTypeScriptType(node));
+            return tsutils.couldBeFunction(getTypeScriptType(node));
         },
-        couldBeMonoTypeOperatorFunction: (node: estree.Node) =>
-            couldBeType(node, "MonoTypeOperatorFunction"),
-        isAny: (node: estree.Node) => isAnyTS(getTypeScriptType(node)),
-        isReferenceType: (node: estree.Node) => isReferenceTypeTS(getTypeScriptType(node))
+        couldBeMonoTypeOperatorFunction: (node: estree.Node) => couldBeType(node, 'MonoTypeOperatorFunction'),
+        isAny: (node: estree.Node) => tsutils.isAny(getTypeScriptType(node)),
+        isReferenceType: (node: estree.Node) => tsutils.isReferenceType(getTypeScriptType(node)),
     };
 }

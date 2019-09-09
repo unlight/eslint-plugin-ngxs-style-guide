@@ -1,6 +1,4 @@
-import { hasStateDecorator, estree, eslint, isIdentifierEndsWith } from '../utils';
-
-export const message = 'States should have a `.state.ts` suffix for the filename';
+import { hasStateDecorator, estree, eslint, isIdentifierEndsWith, getRuleId, CustomRule } from '../utils';
 
 function create(context: eslint.RuleContext<string, never>) {
     const filenameWithExtension = context.getFilename();
@@ -21,8 +19,7 @@ function create(context: eslint.RuleContext<string, never>) {
         'Program:exit'(node: estree.Program) {
             if (hasDecorator && !filenameWithExtension.endsWith('.state.ts')) {
                 context.report({
-                    // @ts-ignore
-                    message,
+                    messageId: 'default',
                     node,
                 });
             }
@@ -30,6 +27,20 @@ function create(context: eslint.RuleContext<string, never>) {
     };
 }
 
-export const rule = {
+export const rule: CustomRule = {
+    id: getRuleId(__filename),
     create,
+    meta: {
+        docs: {
+            description: 'States should have a `.state.ts` suffix for the filename',
+            url: 'https://www.ngxs.io/recipes/style-guide#state-filenames',
+            category: 'Best Practices',
+            recommended: 'warn',
+        },
+        schema: <any>undefined,
+        type: 'suggestion',
+        messages: {
+            default: 'States should have a `.state.ts` suffix for the filename',
+        }
+    },
 };

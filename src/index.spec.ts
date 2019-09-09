@@ -18,12 +18,12 @@ export const fixtureFile = JSON.parse(readFileSync(fixtureProjectFile, 'utf8')).
 
 it('rules', () => {
     const size = Object.keys(rules).length;
-    assert(size > 0);
+    assert.ok(size > 0);
 });
 
 it('recommended rules enabled', () => {
     Object.entries(configs.recommended.rules).forEach(([name, state]) => {
-        assert(name, name);
-        assert(state === 1, `${name} state`);
+        assert.ok(name, name);
+        assert.ok(state === 'warn', `${name} state`);
     });
 });

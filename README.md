@@ -28,6 +28,6 @@ NGXS style guide - https://www.ngxs.io/recipes/style-guide
 * `ngxs-style-guide/select-suffix`  Selects should have a `$` suffix
 * `ngxs-style-guide/action-suffixes`  Actions should NOT have a suffix
 * `ngxs-style-guide/plugin-suffix`  Plugins should end with the `Plugin` suffix
+* `ngxs-style-guide/no-subscribe-in-actions`  Possible error https://stackoverflow.com/questions/56122116/do-not-subscribe-to-actions-ngxs
 
 ## Todo
-* https://stackoverflow.com/questions/56122116/do-not-subscribe-to-actions-ngxs
