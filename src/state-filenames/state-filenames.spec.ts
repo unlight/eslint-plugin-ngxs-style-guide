@@ -1,14 +1,14 @@
-import * as stateFilenames from './state-filenames';
+import { rule } from './state-filenames';
 import { ruleTester } from '../index.spec';
 
-it('state-filenames', () => {
+it(rule.id, () => {
 
-    ruleTester.run('state-filenames', stateFilenames.rule as any, {
+    ruleTester.run(rule.id, rule, {
         invalid: [
             {
                 filename: 'src/zoo.ts',
                 code: `@State() class ZooState { }`,
-                errors: [{ message: stateFilenames.message } as any],
+                errors: [{ messageId: 'default' }],
             },
         ],
         valid: [

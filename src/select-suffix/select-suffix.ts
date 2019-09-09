@@ -1,35 +1,42 @@
-import { getDecoratorByName, isClassProperty, estree, eslint } from '../utils';
-
-export const message = 'Selects should have a `$` suffix';
+import { estree, eslint, hasSelectDecorator, CustomRule, getRuleId } from '../utils';
 
 function create(context: eslint.RuleContext<string, never>) {
     return {
-        ClassProperty(node: estree.Node) {
-            if (!isClassProperty(node)) {
-                throw new TypeError(`Unexpected node type (${node.type}), expected ClassDeclaration`);
-            }
-            const decoratorNode = getDecoratorByName(node, 'Select');
-            if (decoratorNode == undefined) {
+        ClassProperty(node: estree.ClassProperty) {
+            if (!hasSelectDecorator(node) || !node.key) {
                 return;
             }
             // Class property has @Select decorator, check name
             const propertyName = (node.key as estree.Identifier).name;
-            if (!propertyName.endsWith('$')) {
+            if (propertyName && !propertyName.endsWith('$')) {
                 context.report({
-                    // @ts-ignore
-                    message,
+                    messageId: 'suffix',
                     node: node.key,
                     fix: (fixer) => {
                         const newName = `${propertyName}$`;
                         return fixer.replaceTextRange(node.key.range, newName);
-                    }
+                    },
                 });
             }
         }
     };
 }
 
-export const rule: eslint.RuleModule<string, never> = {
+export const rule: CustomRule = {
+    id: getRuleId(__filename),
     create,
-    meta: undefined as any,
+    meta: {
+        docs: {
+            category: 'Best Practices',
+            description: 'Selects should have a `$` suffix',
+            url: 'https://www.ngxs.io/recipes/style-guide#state-suffix',
+            recommended: 'warn',
+        },
+        type: 'suggestion',
+        fixable: 'code',
+        messages: {
+            suffix: 'Selects should have a `$` suffix',
+        },
+        schema: <any>undefined,
+    },
 };

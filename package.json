@@ -35,7 +35,14 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "ts-optchain": "^0.1.8"
+    "1-liners": "^0.4.2",
+    "@typescript-eslint/experimental-utils": "^2.1.0",
+    "ts-optchain": "^0.1.8",
+    "tsutils": "^3.0.0",
+    "tsutils-etc": "^1.1.0"
+  },
+  "peerDependencies": {
+    "typescript": "3.X"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.4",
@@ -48,7 +55,6 @@
     "@types/node": "^12.7.4",
     "@types/semantic-release": "^15.13.0",
     "@typescript-eslint/eslint-plugin-tslint": "^2.1.0",
-    "@typescript-eslint/experimental-utils": "^2.1.0",
     "@typescript-eslint/parser": "^2.1.0",
     "eslint": "^6.3.0",
     "eslint-import-resolver-node": "^0.3.2",
