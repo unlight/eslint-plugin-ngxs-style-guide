@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v1.1.1...v1.2.0) (2019-09-09)
+
+
+### Features
+
+* Rule do not subscribe in actions https://stackoverflow.com/questions/56122116/do-not-subscribe-to-actions-ngxs ([4db3cf0](https://github.com/unlight/eslint-plugin-ngxs-style-guide/commit/4db3cf0))
+
 ## [1.1.1](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v1.1.0...v1.1.1) (2019-09-07)
 
 
