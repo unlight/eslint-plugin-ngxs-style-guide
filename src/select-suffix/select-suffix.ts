@@ -10,7 +10,7 @@ function create(context: eslint.RuleContext<string, never>) {
             const propertyName = (node.key as estree.Identifier).name;
             if (propertyName && !propertyName.endsWith('$')) {
                 context.report({
-                    messageId: 'suffix',
+                    messageId: 'default',
                     node: node.key,
                     fix: (fixer) => {
                         const newName = `${propertyName}$`;
@@ -35,7 +35,7 @@ export const rule: CustomRule = {
         type: 'suggestion',
         fixable: 'code',
         messages: {
-            suffix: 'Selects should have a `$` suffix',
+            default: 'Selects should have a `$` suffix',
         },
         schema: <any>undefined,
     },

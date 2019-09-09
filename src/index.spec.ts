@@ -18,7 +18,7 @@ export const fixtureFile = JSON.parse(readFileSync(fixtureProjectFile, 'utf8')).
 
 it('rules', () => {
     const size = Object.keys(rules).length;
-    assert.ok(size > 0);
+    assert.ok(size >= 7);
 });
 
 it('recommended rules enabled', () => {

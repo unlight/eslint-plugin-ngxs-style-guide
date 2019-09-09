@@ -7,6 +7,7 @@ import { rule as stateInterfaces } from './state-interfaces/state-interfaces';
 import { rule as actionSuffixes } from './action-suffixes/action-suffixes';
 import { rule as pluginSuffix } from './plugin-suffix/plugin-suffix';
 import { rule as selectSuffix } from './select-suffix/select-suffix';
+import { rule as noSubscribeInActions } from './no-subscribe-in-actions/no-subscribe-in-actions';
 
 const allRules = [
     stateFilenames,
@@ -15,6 +16,7 @@ const allRules = [
     stateSuffix,
     pluginSuffix,
     selectSuffix,
+    noSubscribeInActions,
 ];
 
 const recommendedRules = [
