@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v1.2.0...v1.2.1) (2019-09-09)
+
+
+### Bug Fixes
+
+* Build bundle entrypoint error ([0c599a6](https://github.com/unlight/eslint-plugin-ngxs-style-guide/commit/0c599a6))
+
 # [1.2.0](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v1.1.1...v1.2.0) (2019-09-09)
 
 
