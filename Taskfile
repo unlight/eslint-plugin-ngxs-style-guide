@@ -1,5 +1,6 @@
 #!/bin/bash
 PATH="$PWD/node_modules/.bin":$PATH
+set -e
 
 hello() {
     echo Hello from taskfile

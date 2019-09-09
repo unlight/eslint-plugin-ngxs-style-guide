@@ -31,7 +31,7 @@
     "lint:w": "run-p tsclint:w eslint:w",
     "semantic-release": "semantic-release",
     "dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server",
-    "build": "sh Taskfile build_bundle",
+    "build": "sh Taskfile build",
     "commit": "git-cz"
   },
   "dependencies": {
