@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v1.2.1...v1.2.2) (2019-09-09)
+
+
+### Bug Fixes
+
+* Removed build bundle script (typescript-bundle) ([c08a549](https://github.com/unlight/eslint-plugin-ngxs-style-guide/commit/c08a549))
+
 ## [1.2.1](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v1.2.0...v1.2.1) (2019-09-09)
 
 
