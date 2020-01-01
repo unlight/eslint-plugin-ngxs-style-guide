@@ -6,7 +6,6 @@ import { readFileSync } from 'fs';
 
 export const ruleTester = new TSESLint.RuleTester({
     parserOptions: {
-        ecmaVersion: 2019,
         sourceType: 'module',
         ecmaFeatures: {},
     },

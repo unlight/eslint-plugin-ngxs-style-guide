@@ -1,13 +1,12 @@
-import * as actionSuffixes from './action-suffixes';
+import { rule } from './action-suffixes';
 import { ruleTester } from '../index.spec';
 
-it('select-suffix', () => {
-
-    ruleTester.run('action-suffixes', actionSuffixes.rule as any, {
+it(rule.create.name, () => {
+    ruleTester.run(rule.create.name, rule, {
         invalid: [
             {
                 code: `class FeedZebraAction { static readonly type = '[Zoo] Feed Zebra' }`,
-                errors: [{ message: actionSuffixes.message } as any],
+                errors: [{ messageId: 'default' }],
             },
         ],
         valid: [
@@ -15,5 +14,4 @@ it('select-suffix', () => {
             `class Feed { static readonly type = 'x [Zoo] Feed' }`,
         ],
     });
-
 });

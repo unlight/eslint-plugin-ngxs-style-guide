@@ -4,7 +4,6 @@ import { rule } from './return-observable-in-actions';
 const testName = 'return-observable-in-actions';
 
 it(testName, () => {
-
     ruleTester.run(testName, rule, {
         invalid: [],
         valid: [
@@ -17,5 +16,4 @@ it(testName, () => {
             },
         ],
     });
-
 });

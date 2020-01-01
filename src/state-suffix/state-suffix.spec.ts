@@ -2,7 +2,6 @@ import * as stateSuffix from './state-suffix';
 import { ruleTester } from '../index.spec';
 
 it('state-suffix', () => {
-
     ruleTester.run('state-suffix', stateSuffix.rule, {
         invalid: [
             {
@@ -13,5 +12,4 @@ it('state-suffix', () => {
         ],
         valid: [`@State() class ZooState { }`, `@Foo() class Zoo { }`],
     });
-
 });
