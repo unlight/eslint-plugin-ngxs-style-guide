@@ -1,6 +1,6 @@
 import { getDecoratorByName, estree, eslint, hasSelectDecorator } from '../utils';
 
-function create(context: eslint.RuleContext<string, never>) {
+function selectSuffix(context: eslint.RuleContext<string, never>) {
     return {
         ClassProperty(node: estree.ClassProperty) {
             if (!hasSelectDecorator(node) || !node.key) {
@@ -10,20 +10,20 @@ function create(context: eslint.RuleContext<string, never>) {
             const propertyName = (node.key as estree.Identifier).name;
             if (propertyName && !propertyName.endsWith('$')) {
                 context.report({
-                    messageId: 'suffix',
+                    messageId: 'default',
                     node: node.key,
-                    fix: (fixer) => {
+                    fix: fixer => {
                         const newName = `${propertyName}$`;
                         return fixer.replaceTextRange(node.key.range, newName);
                     },
                 });
             }
-        }
+        },
     };
 }
 
 export const rule: eslint.RuleModule<string, never> = {
-    create,
+    create: selectSuffix,
     meta: {
         docs: {
             category: 'Best Practices',
@@ -34,8 +34,8 @@ export const rule: eslint.RuleModule<string, never> = {
         type: 'suggestion',
         fixable: 'code',
         messages: {
-            suffix: 'Selects should have a `$` suffix',
+            default: 'Selects should have a `$` suffix',
         },
-        schema: <any>undefined,
+        schema: {},
     },
 };

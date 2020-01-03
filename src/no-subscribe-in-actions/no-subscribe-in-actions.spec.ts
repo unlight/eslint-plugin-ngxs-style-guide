@@ -1,4 +1,4 @@
-import { ruleTester, fixtureFile, fixtureProjectFile } from '../index.spec';
+import { ruleTester } from '../index.spec';
 import { rule } from './no-subscribe-in-actions';
 
 it(rule.create.name, () => {

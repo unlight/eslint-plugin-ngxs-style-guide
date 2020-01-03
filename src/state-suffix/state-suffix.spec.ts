@@ -1,12 +1,12 @@
-import * as stateSuffix from './state-suffix';
+import { rule } from './state-suffix';
 import { ruleTester } from '../index.spec';
 
-it('state-suffix', () => {
-    ruleTester.run('state-suffix', stateSuffix.rule, {
+it(rule.create.name, () => {
+    ruleTester.run(rule.create.name, rule, {
         invalid: [
             {
                 code: `@State() class Zoo { }`,
-                errors: [{ message: stateSuffix.message } as any],
+                errors: [{ messageId: 'default' }],
                 output: `@State() class ZooState { }`,
             },
         ],

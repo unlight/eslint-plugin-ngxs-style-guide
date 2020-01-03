@@ -1,13 +1,12 @@
-import * as stateInterfaces from './state-interfaces';
+import { rule } from './state-interfaces';
 import { ruleTester } from '../index.spec';
 
-it('state-interfaces', () => {
-
-    ruleTester.run('state-interfaces', stateInterfaces.rule as any, {
+it(rule.create.name, () => {
+    ruleTester.run('state-interfaces', rule as any, {
         invalid: [
             {
                 code: `@State<IZooState>() class ZooState { }`,
-                errors: [{ message: stateInterfaces.message } as any],
+                errors: [{ messageId: 'default' }],
                 output: `@State<IZooStateModel>() class ZooState { }`,
             },
         ],
@@ -16,5 +15,4 @@ it('state-interfaces', () => {
             `@Other<OtherType>() class OtherClass { }`,
         ],
     });
-
 });

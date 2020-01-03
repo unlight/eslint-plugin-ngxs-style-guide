@@ -4,6 +4,7 @@ import { rule as stateInterfaces } from './state-interfaces/state-interfaces';
 import { rule as actionSuffixes } from './action-suffixes/action-suffixes';
 import { rule as pluginSuffix } from './plugin-suffix/plugin-suffix';
 import { rule as selectSuffix } from './select-suffix/select-suffix';
+import { rule as noSubscribeInActions } from './no-subscribe-in-actions/no-subscribe-in-actions';
 
 export const rules = {
     'state-filenames': stateFilenames,
@@ -12,6 +13,7 @@ export const rules = {
     'state-suffix': stateSuffix,
     'plugin-suffix': pluginSuffix,
     'select-suffix': selectSuffix,
+    'no-subscribe-in-actions': noSubscribeInActions,
 };
 
 export const configs = {
@@ -24,5 +26,5 @@ export const configs = {
             'ngxs-style-guide/plugin-suffix': 1,
             'ngxs-style-guide/select-suffix': 1,
         },
-    }
+    },
 };

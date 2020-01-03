@@ -1,18 +1,14 @@
-import * as pluginSuffix from './plugin-suffix';
+import { rule } from './plugin-suffix';
 import { ruleTester } from '../index.spec';
 
-it('select-suffix', () => {
-
-    ruleTester.run('plugin-suffix', pluginSuffix.rule as any, {
+it(rule.create.name, () => {
+    ruleTester.run('plugin-suffix', rule, {
         invalid: [
             {
                 code: `class Logger implements NgxsPlugin { }`,
-                errors: [{ message: pluginSuffix.message } as any],
+                errors: [{ messageId: 'default' }],
             },
         ],
-        valid: [
-            `class LoggerPlugin implements NgxsPlugin { }`,
-        ],
+        valid: [`class LoggerPlugin implements NgxsPlugin { }`],
     });
-
 });

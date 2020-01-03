@@ -3,7 +3,9 @@ import { rules, configs } from '.';
 import * as assert from 'assert';
 import { join } from 'path';
 import { readFileSync } from 'fs';
+import { createRuleTester } from 'eslint-etc';
 
+// export const ruleTester = createRuleTester({});
 export const ruleTester = new TSESLint.RuleTester({
     parserOptions: {
         sourceType: 'module',

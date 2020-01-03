@@ -1,16 +1,12 @@
 import { estree, eslint, isImplements, isIdentifierEndsWith } from '../utils';
 
-export const message = 'Plugins should end with the `Plugin` suffix';
-
-function create(context: eslint.RuleContext<string, never>) {
-
+function pluginSuffix(context: eslint.RuleContext<string, never>) {
     return {
         ClassDeclaration(node: estree.ClassDeclaration) {
             if (node.id && isImplements(node, 'NgxsPlugin')) {
                 if (!isIdentifierEndsWith(node, 'Plugin')) {
                     context.report({
-                        // @ts-ignore
-                        message,
+                        messageId: 'default',
                         node: node.id,
                     });
                 }
@@ -20,6 +16,18 @@ function create(context: eslint.RuleContext<string, never>) {
 }
 
 export const rule: eslint.RuleModule<string, never> = {
-    create,
-    meta: undefined as any,
+    create: pluginSuffix,
+    meta: {
+        type: 'suggestion',
+        schema: {},
+        docs: {
+            category: 'Stylistic Issues',
+            description: 'Plugins should end with the `Plugin` suffix',
+            recommended: 'warn',
+            url: 'https://www.ngxs.io/recipes/style-guide#plugin-suffix',
+        },
+        messages: {
+            default: 'Plugins should end with the `Plugin` suffix',
+        },
+    },
 };

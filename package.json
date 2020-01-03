@@ -4,7 +4,6 @@
   "license": "MIT",
   "description": "ESLint rules for ngxs state manager",
   "main": "index.js",
-  "author": "2019",
   "keywords": [
     "eslintplugin",
     "eslint-plugin",
@@ -26,18 +25,20 @@
     "eslint:fix": "npm run eslint -- --fix",
     "tslint:fix": "node node_modules/tslint/bin/tslint -p tsconfig.json --fix",
     "lint:w": "run-p tsclint:w eslint:w",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "lint:fix": "npm run tslint:fix || true && npm run eslint:fix",
+    "build": "sh Taskfile build"
   },
   "dependencies": {
-    "@typescript-eslint/experimental-utils": "^2.14.0",
     "ts-optchain": "^0.1.8",
-    "tsutils": "^3.17.1",
     "tsutils-etc": "^1.1.0"
   },
   "peerDependencies": {
     "typescript": "3.X"
   },
   "devDependencies": {
+    "@typescript-eslint/experimental-utils": "^2.14.0",
+    "eslint-etc": "0.0.8",
     "@semantic-release/changelog": "^3.0.6",
     "@semantic-release/git": "^7.0.18",
     "@types/mocha": "^5.2.7",
@@ -64,11 +65,6 @@
     "tslint-sonarts": "^1.9.0",
     "typescript": "~3.5.3",
     "watchexec-bin": "^1.0.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
   },
   "repository": {
     "type": "git",

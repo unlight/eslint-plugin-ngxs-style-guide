@@ -1,7 +1,7 @@
 import { getDecoratorByName, isClassProperty, estree, eslint } from '../utils';
 
 function actionSuffixes(context: eslint.RuleContext<string, never>) {
-    let className: string | undefined = undefined;
+    let className: string | undefined | null;
     let hasStaticReadonlyType = false;
     let isActionClass = false;
 
@@ -42,6 +42,14 @@ function actionSuffixes(context: eslint.RuleContext<string, never>) {
 export const rule: eslint.RuleModule<string, never> = {
     create: actionSuffixes,
     meta: {
+        type: 'suggestion',
+        schema: {},
+        docs: {
+            category: 'Stylistic Issues',
+            description: 'Actions should NOT have a suffix',
+            recommended: 'warn',
+            url: 'https://www.ngxs.io/recipes/style-guide#action-suffixes',
+        },
         messages: {
             default: 'Actions should NOT have a suffix `Action`',
         },
