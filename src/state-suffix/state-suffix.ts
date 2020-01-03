@@ -1,4 +1,4 @@
-import { eslint, isIdentifierEndsWith, estree, hasStateDecorator, getRuleId, CustomRule } from '../utils';
+import { eslint, isIdentifierEndsWith, estree, hasStateDecorator } from '../utils';
 import { Nullable } from 'simplytyped';
 
 function stateSuffix(context: eslint.RuleContext<string, never>) {

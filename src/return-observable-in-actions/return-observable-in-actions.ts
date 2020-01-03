@@ -2,8 +2,6 @@ import { eslint, estree } from '../utils';
 
 // function create(context: eslint.RuleContext<string, never>) {
 
-
-
 //     return {
 //         Program(node) {
 //         },

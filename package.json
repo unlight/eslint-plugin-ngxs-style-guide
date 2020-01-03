@@ -37,16 +37,16 @@
     "typescript": "3.X"
   },
   "devDependencies": {
-    "@typescript-eslint/experimental-utils": "^2.14.0",
-    "eslint-etc": "0.0.8",
     "@semantic-release/changelog": "^3.0.6",
     "@semantic-release/git": "^7.0.18",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.22",
     "@types/semantic-release": "^15.13.1",
     "@typescript-eslint/eslint-plugin-tslint": "^2.14.0",
+    "@typescript-eslint/experimental-utils": "^2.14.0",
     "@typescript-eslint/parser": "^2.14.0",
     "eslint": "^6.8.0",
+    "eslint-etc": "0.0.8",
     "eslint-import-resolver-node": "^0.3.2",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-only-warn": "^1.0.2",

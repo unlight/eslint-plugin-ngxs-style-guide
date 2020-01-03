@@ -30,7 +30,7 @@ function actionSuffixes(context: eslint.RuleContext<string, never>) {
 
                 if (node.value && node.value.type === 'Literal') {
                     const value = node.value.value as string;
-                    if (/^\[[A-Z][A-Za-z]+\]/.test(value)) {
+                    if (/^\[[A-Z][A-Za-z]+]/.test(value)) {
                         isActionClass = true;
                     }
                 }
