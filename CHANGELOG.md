@@ -1,3 +1,19 @@
+## [2.0.0](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v1.3.0...v2.0.0) (2021-06-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* TypeScript >= 4, Node >= 14
+
+### Features
+
+* No pipe() after dispatch ([f1f5f5e](https://github.com/unlight/eslint-plugin-ngxs-style-guide/commit/f1f5f5e92edd9f1d5c4fcfa8c44620fc66494387))
+
+
+### Miscellaneous Chores
+
+* Updated packages ([d4f842f](https://github.com/unlight/eslint-plugin-ngxs-style-guide/commit/d4f842f9fe39a373ba6926ad063fa5efd87a1b31)), closes [#1](https://github.com/unlight/eslint-plugin-ngxs-style-guide/issues/1)
+
 # [1.3.0](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v1.2.2...v1.3.0) (2020-01-03)
 
 
