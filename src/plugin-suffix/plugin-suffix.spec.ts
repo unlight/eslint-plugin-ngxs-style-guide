@@ -1,5 +1,5 @@
-import { rule } from './plugin-suffix';
 import { ruleTester } from '../index.spec';
+import { rule } from './plugin-suffix';
 
 it(rule.create.name, () => {
     ruleTester.run('plugin-suffix', rule, {

@@ -1,5 +1,5 @@
-import { rule } from './select-suffix';
 import { ruleTester } from '../index.spec';
+import { rule } from './select-suffix';
 
 it(rule.create.name, () => {
     ruleTester.run(rule.create.name, rule, {

@@ -1,5 +1,5 @@
-import { rule } from './state-filenames';
 import { ruleTester } from '../index.spec';
+import { rule } from './state-filenames';
 
 it(rule.create.name, () => {
     ruleTester.run('state-filenames', rule, {

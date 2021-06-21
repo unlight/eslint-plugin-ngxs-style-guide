@@ -1,9 +1,10 @@
 import { TSESLint } from '@typescript-eslint/experimental-utils';
-import { rules, configs } from '.';
 import * as assert from 'assert';
-import { join } from 'path';
-import { readFileSync } from 'fs';
 import { createRuleTester } from 'eslint-etc';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+import { configs, rules } from '.';
 
 // export const ruleTester = createRuleTester({});
 export const ruleTester = new TSESLint.RuleTester({
@@ -15,7 +16,8 @@ export const ruleTester = new TSESLint.RuleTester({
 });
 
 export const fixtureProjectFile = join(__dirname, '..', 'tsconfig.fixture.json');
-export const fixtureFile = JSON.parse(readFileSync(fixtureProjectFile, 'utf8')).files[0];
+export const fixtureFile = JSON.parse(readFileSync(fixtureProjectFile, 'utf8'))
+    .files[0];
 
 it('rules', () => {
     const size = Object.keys(rules).length;
@@ -23,8 +25,8 @@ it('rules', () => {
 });
 
 it('recommended rules enabled', () => {
-    Object.entries(configs.recommended.rules).forEach(([name, state]) => {
+    for (const [name, state] of Object.entries(configs.recommended.rules)) {
         assert.ok(name, name);
         assert.ok(state === 'warn', `${name} state`);
-    });
+    }
 });

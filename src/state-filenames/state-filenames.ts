@@ -1,4 +1,4 @@
-import { hasStateDecorator, estree, eslint, isIdentifierEndsWith } from '../utils';
+import { eslint, estree, hasStateDecorator, isIdentifierEndsWith } from '../utils';
 
 function stateFilenames(context: eslint.RuleContext<string, never>) {
     const filenameWithExtension = context.getFilename();

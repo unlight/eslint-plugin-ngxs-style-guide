@@ -1,5 +1,6 @@
 import { oc } from 'ts-optchain';
-import { getDecoratorByName, isClassDeclaration, eslint, estree } from '../utils';
+
+import { eslint, estree, getDecoratorByName, isClassDeclaration } from '../utils';
 
 function stateInterfaces(context: eslint.RuleContext<string, never>) {
     return {
@@ -11,18 +12,22 @@ function stateInterfaces(context: eslint.RuleContext<string, never>) {
             }
             const decoratorNode: any = getDecoratorByName(node, 'State');
             if (decoratorNode != undefined) {
-                const typeName: any = oc(
-                    decoratorNode,
-                ).expression.typeParameters.params[0].typeName();
+                const typeName: any =
+                    oc(decoratorNode).expression.typeParameters.params[0].typeName();
                 if (typeName != undefined && !typeName.name.endsWith('Model')) {
                     context.report({
                         messageId: 'default',
                         node,
                         fix: fixer => {
-                            let result: ReturnType<typeof fixer.replaceTextRange> | null = null;
+                            let result: ReturnType<
+                                typeof fixer.replaceTextRange
+                            > | null = null;
                             if (node.id) {
                                 const newName = `${typeName.name}Model`;
-                                result = fixer.replaceTextRange(typeName.range, newName);
+                                result = fixer.replaceTextRange(
+                                    typeName.range,
+                                    newName,
+                                );
                             }
                             return result;
                         },

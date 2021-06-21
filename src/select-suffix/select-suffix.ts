@@ -1,4 +1,4 @@
-import { estree, eslint, hasSelectDecorator } from '../utils';
+import { eslint, estree, hasSelectDecorator } from '../utils';
 
 function selectSuffix(context: eslint.RuleContext<string, never>) {
     return {

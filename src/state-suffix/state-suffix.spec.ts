@@ -1,5 +1,5 @@
-import { rule } from './state-suffix';
 import { ruleTester } from '../index.spec';
+import { rule } from './state-suffix';
 
 it(rule.create.name, () => {
     ruleTester.run(rule.create.name, rule, {

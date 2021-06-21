@@ -1,15 +1,17 @@
-import { estree, eslint, isImplements, isIdentifierEndsWith } from '../utils';
+import { eslint, estree, isIdentifierEndsWith, isImplements } from '../utils';
 
 function pluginSuffix(context: eslint.RuleContext<string, never>) {
     return {
         ClassDeclaration(node: estree.ClassDeclaration) {
-            if (node.id && isImplements(node, 'NgxsPlugin')) {
-                if (!isIdentifierEndsWith(node, 'Plugin')) {
-                    context.report({
-                        messageId: 'default',
-                        node: node.id,
-                    });
-                }
+            if (
+                node.id &&
+                isImplements(node, 'NgxsPlugin') &&
+                !isIdentifierEndsWith(node, 'Plugin')
+            ) {
+                context.report({
+                    messageId: 'default',
+                    node: node.id,
+                });
             }
         },
     };

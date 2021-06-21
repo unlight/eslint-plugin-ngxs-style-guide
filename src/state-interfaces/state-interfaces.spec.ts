@@ -1,5 +1,5 @@
-import { rule } from './state-interfaces';
 import { ruleTester } from '../index.spec';
+import { rule } from './state-interfaces';
 
 it(rule.create.name, () => {
     ruleTester.run('state-interfaces', rule as any, {

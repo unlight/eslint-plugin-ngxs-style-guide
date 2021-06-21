@@ -1,4 +1,4 @@
-import { getDecoratorByName, isClassProperty, estree, eslint } from '../utils';
+import { eslint, estree, getDecoratorByName, isClassProperty } from '../utils';
 
 function actionSuffixes(context: eslint.RuleContext<string, never>) {
     let className: string | undefined | null;

@@ -1,8 +1,8 @@
 import {
     eslint,
     estree,
-    getParentFunction,
     getParentClass,
+    getParentFunction,
     hasActionDecorator,
     hasStateDecorator,
 } from '../utils';

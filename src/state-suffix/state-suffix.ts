@@ -1,5 +1,6 @@
-import { eslint, isIdentifierEndsWith, estree, hasStateDecorator } from '../utils';
 import { Nullable } from 'simplytyped';
+
+import { eslint, estree, hasStateDecorator, isIdentifierEndsWith } from '../utils';
 
 function stateSuffix(context: eslint.RuleContext<string, never>) {
     return {
@@ -9,7 +10,9 @@ function stateSuffix(context: eslint.RuleContext<string, never>) {
                     messageId: 'default',
                     node: node.id!,
                     fix: fixer => {
-                        let result: Nullable<ReturnType<typeof fixer.replaceTextRange>> = null; // tslint:disable-line:no-null-keyword
+                        let result: Nullable<
+                            ReturnType<typeof fixer.replaceTextRange>
+                        > = null; // tslint:disable-line:no-null-keyword
                         if (node.id) {
                             const newName = `${node.id.name}State`;
                             result = fixer.replaceTextRange(node.id.range, newName);

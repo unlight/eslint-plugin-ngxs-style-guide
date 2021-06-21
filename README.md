@@ -43,7 +43,7 @@ NGXS style guide - https://www.ngxs.io/recipes/style-guide
 
 -   return observable from action
 -   selector inject it must be after
-   @State<StateModel>({
+    @State<StateModel>({
     name: 'supplier',
     defaults: defaultState,
     })
