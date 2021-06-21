@@ -1,5 +1,3 @@
-import { PlainObject } from 'simplytyped';
-
 import { rule as actionSuffixes } from './action-suffixes/action-suffixes';
 import { rule as noPipeDispatch } from './no-pipe-dispatch/no-pipe-dispatch';
 import { rule as noSubscribeInActions } from './no-subscribe-in-actions/no-subscribe-in-actions';
@@ -22,9 +20,8 @@ export const rules = {
 
 export const configs = {
     recommended: {
-        rules: Object.keys(rules).reduce((result, current) => {
-            result[`ngxs-style-guide/${current}`] = 'warn';
-            return result;
-        }, {}),
+        rules: Object.fromEntries(
+            Object.keys(rules).map(rule => [`ngxs-style-guide/${rule}`, 'warn']),
+        ),
     },
 };

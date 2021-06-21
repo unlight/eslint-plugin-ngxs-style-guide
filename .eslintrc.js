@@ -85,6 +85,7 @@ module.exports = {
         'import/newline-after-import': 1,
         'import/no-duplicates': 1,
         // typescript-eslint
+        '@typescript-eslint/explicit-module-boundary-types': 0,
         '@typescript-eslint/no-floating-promises': 1,
         '@typescript-eslint/no-unnecessary-condition': 1,
         // sort-class-members

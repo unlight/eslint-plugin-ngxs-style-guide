@@ -3,8 +3,8 @@ import {
     TSESTree as estree,
 } from '@typescript-eslint/experimental-utils';
 import { Predicate } from 'simplytyped';
-import * as tsutils from 'tsutils-etc';
-import * as ts from 'typescript';
+import tsutils from 'tsutils-etc';
+import ts from 'typescript';
 
 export { eslint, estree };
 
@@ -14,8 +14,7 @@ export function getDecoratorByName(
 ): estree.Decorator | undefined {
     return ((<any>node).decorators || []).find(
         (d: { expression: estree.CallExpression }) => {
-            const expression =
-                d.expression && d.expression.type === 'CallExpression' && d.expression;
+            const expression = d.expression?.type === 'CallExpression' && d.expression;
             return (
                 expression &&
                 expression.callee.type === 'Identifier' &&
@@ -53,15 +52,13 @@ export function isImplements(
     interfaceName: string,
 ): boolean {
     return Boolean(
-        node.implements &&
-            node.implements.find(node => {
-                return (
-                    node &&
-                    node.expression &&
-                    node.expression.type === 'Identifier' &&
-                    node.expression.name === interfaceName
-                );
-            }),
+        node.implements?.some(node => {
+            return (
+                node.expression &&
+                node.expression.type === 'Identifier' &&
+                node.expression.name === interfaceName
+            );
+        }),
     );
 }
 

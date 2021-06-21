@@ -3,7 +3,7 @@ import { eslint, estree, hasSelectDecorator } from '../utils';
 function selectSuffix(context: eslint.RuleContext<string, never>) {
     return {
         ClassProperty(node: estree.ClassProperty) {
-            if (!hasSelectDecorator(node) || !node.key) {
+            if (!hasSelectDecorator(node)) {
                 return;
             }
             // Class property has @Select decorator, check name

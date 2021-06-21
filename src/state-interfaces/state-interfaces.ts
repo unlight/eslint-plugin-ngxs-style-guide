@@ -1,5 +1,3 @@
-import { oc } from 'ts-optchain';
-
 import { eslint, estree, getDecoratorByName, isClassDeclaration } from '../utils';
 
 function stateInterfaces(context: eslint.RuleContext<string, never>) {
@@ -11,28 +9,22 @@ function stateInterfaces(context: eslint.RuleContext<string, never>) {
                 );
             }
             const decoratorNode: any = getDecoratorByName(node, 'State');
-            if (decoratorNode != undefined) {
-                const typeName: any =
-                    oc(decoratorNode).expression.typeParameters.params[0].typeName();
-                if (typeName != undefined && !typeName.name.endsWith('Model')) {
-                    context.report({
-                        messageId: 'default',
-                        node,
-                        fix: fixer => {
-                            let result: ReturnType<
-                                typeof fixer.replaceTextRange
-                            > | null = null;
-                            if (node.id) {
-                                const newName = `${typeName.name}Model`;
-                                result = fixer.replaceTextRange(
-                                    typeName.range,
-                                    newName,
-                                );
-                            }
-                            return result;
-                        },
-                    });
-                }
+            const typeName: any =
+                decoratorNode?.expression?.typeParameters?.params?.[0]?.typeName;
+            if (typeName && !typeName.name.endsWith('Model')) {
+                context.report({
+                    messageId: 'default',
+                    node,
+                    fix: fixer => {
+                        let result: ReturnType<typeof fixer.replaceTextRange> | null =
+                            null;
+                        if (node.id) {
+                            const newName = `${typeName.name}Model`;
+                            result = fixer.replaceTextRange(typeName.range, newName);
+                        }
+                        return result;
+                    },
+                });
             }
         },
     };

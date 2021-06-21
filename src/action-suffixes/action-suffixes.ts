@@ -1,8 +1,7 @@
-import { eslint, estree, getDecoratorByName, isClassProperty } from '../utils';
+import { eslint, estree } from '../utils';
 
 function actionSuffixes(context: eslint.RuleContext<string, never>) {
     let className: string | undefined | null;
-    let hasStaticReadonlyType = false;
     let isActionClass = false;
 
     return {
@@ -10,29 +9,20 @@ function actionSuffixes(context: eslint.RuleContext<string, never>) {
             className = node.id && node.id.name;
         },
         'ClassDeclaration:exit'(node: estree.ClassDeclaration) {
-            if (isActionClass && className && className.endsWith('Action')) {
+            if (isActionClass && className && className.endsWith('Action') && node.id) {
                 context.report({
                     messageId: 'default',
-                    node: node.id!,
+                    node: node.id,
                 });
             }
             isActionClass = false;
             className = undefined;
-            hasStaticReadonlyType = false;
         },
         ClassProperty(node: estree.ClassProperty) {
-            if (className) {
-                hasStaticReadonlyType =
-                    node.key &&
-                    (node.key as estree.Identifier).name === 'type' &&
-                    node.readonly === true &&
-                    node.static === true;
-
-                if (node.value && node.value.type === 'Literal') {
-                    const value = node.value.value as string;
-                    if (/^\[[A-Z][A-Za-z]+]/.test(value)) {
-                        isActionClass = true;
-                    }
+            if (className && node.value && node.value.type === 'Literal') {
+                const value = String(node.value.value);
+                if (/^\[[A-Z][A-Za-z]+]/.test(value)) {
+                    isActionClass = true;
                 }
             }
         },

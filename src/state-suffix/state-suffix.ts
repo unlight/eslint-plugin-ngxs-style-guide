@@ -5,10 +5,14 @@ import { eslint, estree, hasStateDecorator, isIdentifierEndsWith } from '../util
 function stateSuffix(context: eslint.RuleContext<string, never>) {
     return {
         ClassDeclaration(node: estree.ClassDeclaration) {
-            if (hasStateDecorator(node) && !isIdentifierEndsWith(node, 'State')) {
+            if (
+                hasStateDecorator(node) &&
+                node.id &&
+                !isIdentifierEndsWith(node, 'State')
+            ) {
                 context.report({
                     messageId: 'default',
-                    node: node.id!,
+                    node: node.id,
                     fix: fixer => {
                         let result: Nullable<
                             ReturnType<typeof fixer.replaceTextRange>

@@ -17,6 +17,7 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "noUncheckedIndexedAccess": true,
     "lib": ["esnext"]
   },
   "include": ["src/**/*.ts"]

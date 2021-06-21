@@ -1,11 +1,4 @@
-import {
-    eslint,
-    estree,
-    getParentClass,
-    getParentFunction,
-    hasActionDecorator,
-    hasStateDecorator,
-} from '../utils';
+import { eslint, estree } from '../utils';
 
 function noPipeDispatch(context: eslint.RuleContext<string, never>) {
     return {

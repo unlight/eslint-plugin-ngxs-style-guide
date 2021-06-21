@@ -11,7 +11,6 @@ function noSubscribeInActions(context: eslint.RuleContext<string, never>) {
     return {
         MemberExpression(node: estree.MemberExpression) {
             if (
-                node.property &&
                 node.property.type === 'Identifier' &&
                 node.property.name === 'subscribe'
             ) {
