@@ -14,12 +14,12 @@ module.exports = {
         ],
         '@semantic-release/changelog',
         [
-            "@semantic-release/npm",
+            '@semantic-release/npm',
             {
-                "pkgRoot": "dist"
-            }
+                pkgRoot: 'dist',
+            },
         ],
-        "@semantic-release/github",
-        "@semantic-release/git",
-    ]
-}
+        '@semantic-release/github',
+        '@semantic-release/git',
+    ],
+};
