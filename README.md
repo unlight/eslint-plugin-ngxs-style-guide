@@ -40,3 +40,11 @@ NGXS style guide - https://www.ngxs.io/recipes/style-guide
 -   `ngxs-style-guide/no-pipe-dispatch` No pipe() after dispatch
 
 ## Todo
+
+-   return observable from action
+-   selector inject it must be after
+   @State<StateModel>({
+    name: 'supplier',
+    defaults: defaultState,
+    })
+    @Injectable({ providedIn: 'root' })
