@@ -1,3 +1,10 @@
+### [2.0.1](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v2.0.0...v2.0.1) (2021-06-23)
+
+
+### Bug Fixes
+
+* Add support for TypeScript 3 ([95db28a](https://github.com/unlight/eslint-plugin-ngxs-style-guide/commit/95db28abd98a2fb36bb859241d215340f4162c3f)), closes [/github.com/unlight/eslint-plugin-ngxs-style-guide/issues/1#issuecomment-866710663](https://github.com/unlight//github.com/unlight/eslint-plugin-ngxs-style-guide/issues/1/issues/issuecomment-866710663) [#1](https://github.com/unlight/eslint-plugin-ngxs-style-guide/issues/1)
+
 ## [2.0.0](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v1.3.0...v2.0.0) (2021-06-21)
 
 
