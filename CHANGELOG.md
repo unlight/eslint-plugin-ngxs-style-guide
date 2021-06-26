@@ -1,3 +1,10 @@
+### [2.0.2](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v2.0.1...v2.0.2) (2021-06-26)
+
+
+### Bug Fixes
+
+* Remove no-pipe-dispatch rule from recomended ([bffa697](https://github.com/unlight/eslint-plugin-ngxs-style-guide/commit/bffa697eed4b0d89ba1380c18552899ef55f2e87)), closes [#2](https://github.com/unlight/eslint-plugin-ngxs-style-guide/issues/2)
+
 ### [2.0.1](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v2.0.0...v2.0.1) (2021-06-23)
 
 
