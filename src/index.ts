@@ -21,7 +21,9 @@ export const rules = {
 export const configs = {
     recommended: {
         rules: Object.fromEntries(
-            Object.keys(rules).map(rule => [`ngxs-style-guide/${rule}`, 'warn']),
+            Object.keys(rules)
+                .filter(rule => rule !== 'no-pipe-dispatch')
+                .map(rule => [`ngxs-style-guide/${rule}`, 'warn']),
         ),
     },
 };

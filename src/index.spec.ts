@@ -28,3 +28,9 @@ it('recommended rules enabled', () => {
         ok(state === 'warn', `${name} state`);
     }
 });
+
+it('some rules are not recommended', () => {
+    const rules = Object.keys(configs.recommended.rules);
+
+    ok(!rules.includes('no-pipe-dispatch'));
+});
