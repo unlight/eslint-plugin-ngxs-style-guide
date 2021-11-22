@@ -26,7 +26,6 @@ export const rule: eslint.RuleModule<string, never> = {
         type: 'problem',
         schema: {},
         docs: {
-            category: 'Possible Errors',
             description: 'No pipe() after dispatch',
             recommended: 'warn',
             url: '',

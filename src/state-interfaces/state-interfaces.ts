@@ -8,9 +8,9 @@ function stateInterfaces(context: eslint.RuleContext<string, never>) {
                     `Unexpected node type (${node.type}), expected ClassDeclaration`,
                 );
             }
-            const decoratorNode: any = getDecoratorByName(node, 'State');
-            const typeName: any =
-                decoratorNode?.expression?.typeParameters?.params?.[0]?.typeName;
+            const decoratorNode = getDecoratorByName(node, 'State');
+            const typeName = (decoratorNode as any)?.expression?.typeParameters
+                ?.params?.[0]?.typeName as estree.Identifier | undefined;
             if (typeName && !typeName.name.endsWith('Model')) {
                 context.report({
                     messageId: 'default',
@@ -37,7 +37,6 @@ export const rule: eslint.RuleModule<string, never> = {
         fixable: 'code',
         schema: {},
         docs: {
-            category: 'Stylistic Issues',
             description:
                 'State interfaces should be named the name of the state followed by the `Model` suffix',
             recommended: 'warn',

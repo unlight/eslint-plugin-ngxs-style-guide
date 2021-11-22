@@ -8,7 +8,7 @@ it(rule.create.name, () => {
         invalid: [
             {
                 code: stripIndent(`
-                    store.dispatch(new Action()).pipe()
+                  store.dispatch(new Action()).pipe()
                 `),
                 errors: [{ messageId: 'default' }],
             },

@@ -23,7 +23,6 @@ export const rule: eslint.RuleModule<string, never> = {
         type: 'suggestion',
         schema: {},
         docs: {
-            category: 'Stylistic Issues',
             description: 'Plugins should end with the `Plugin` suffix',
             recommended: 'warn',
             url: 'https://www.ngxs.io/recipes/style-guide#plugin-suffix',

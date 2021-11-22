@@ -2,7 +2,7 @@ import { eslint, estree, hasSelectDecorator } from '../utils';
 
 function selectSuffix(context: eslint.RuleContext<string, never>) {
     return {
-        ClassProperty(node: estree.ClassProperty) {
+        PropertyDefinition(node: estree.PropertyDefinition) {
             if (!hasSelectDecorator(node)) {
                 return;
             }
@@ -26,7 +26,6 @@ export const rule: eslint.RuleModule<string, never> = {
     create: selectSuffix,
     meta: {
         docs: {
-            category: 'Best Practices',
             description: 'Selects should have a `$` suffix',
             url: 'https://www.ngxs.io/recipes/style-guide#state-suffix',
             recommended: 'warn',

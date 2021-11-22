@@ -34,7 +34,6 @@ export const rule: eslint.RuleModule<string, never> = {
     create: stateFilenames,
     meta: {
         docs: {
-            category: 'Best Practices',
             description: 'States should have a `.state.ts` suffix for the filename',
             url: 'https://www.ngxs.io/recipes/style-guide#state-filenames',
             recommended: 'warn',

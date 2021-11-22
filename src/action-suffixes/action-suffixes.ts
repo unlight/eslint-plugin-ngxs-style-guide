@@ -18,10 +18,10 @@ function actionSuffixes(context: eslint.RuleContext<string, never>) {
             isActionClass = false;
             className = undefined;
         },
-        ClassProperty(node: estree.ClassProperty) {
+        PropertyDefinition(node: estree.PropertyDefinition) {
             if (className && node.value && node.value.type === 'Literal') {
                 const value = String(node.value.value);
-                if (/^\[[A-Z][A-Za-z]+]/.test(value)) {
+                if (/^\[[A-Z][A-Za-z]+/.test(value)) {
                     isActionClass = true;
                 }
             }
@@ -35,7 +35,6 @@ export const rule: eslint.RuleModule<string, never> = {
         type: 'suggestion',
         schema: {},
         docs: {
-            category: 'Stylistic Issues',
             description: 'Actions should NOT have a suffix',
             recommended: 'warn',
             url: 'https://www.ngxs.io/recipes/style-guide#action-suffixes',

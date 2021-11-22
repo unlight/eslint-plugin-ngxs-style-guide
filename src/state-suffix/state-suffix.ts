@@ -36,7 +36,6 @@ export const rule: eslint.RuleModule<string, never> = {
         fixable: 'code',
         schema: {},
         docs: {
-            category: 'Stylistic Issues',
             description: 'A state should always be suffixed with the word `State`',
             recommended: 'warn',
             url: 'https://www.ngxs.io/recipes/style-guide#state-suffix',

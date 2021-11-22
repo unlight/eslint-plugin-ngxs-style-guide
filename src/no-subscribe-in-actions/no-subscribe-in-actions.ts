@@ -32,10 +32,9 @@ function noSubscribeInActions(context: eslint.RuleContext<string, never>) {
 export const rule: eslint.RuleModule<string, never> = {
     create: noSubscribeInActions,
     meta: {
-        type: 'problem',
+        type: 'suggestion',
         schema: {},
         docs: {
-            category: 'Possible Errors',
             description: '',
             recommended: 'warn',
             url: 'https://stackoverflow.com/questions/53047853',
