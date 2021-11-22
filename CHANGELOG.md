@@ -1,3 +1,14 @@
+## [3.0.0](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v2.0.2...v3.0.0) (2021-11-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* Adapted plugin to ESLint 8
+
+### Bug Fixes
+
+* Adapted plugin to ESLint 8 ([a410719](https://github.com/unlight/eslint-plugin-ngxs-style-guide/commit/a4107197b3df625a2a7a6ebbb5d64aaadef75a5f)), closes [#4](https://github.com/unlight/eslint-plugin-ngxs-style-guide/issues/4)
+
 ### [2.0.2](https://github.com/unlight/eslint-plugin-ngxs-style-guide/compare/v2.0.1...v2.0.2) (2021-06-26)
 
 
